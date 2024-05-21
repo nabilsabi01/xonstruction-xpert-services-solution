@@ -1,12 +1,12 @@
 package com.constructionxpert.dao;
 
 import com.constructionxpert.model.Project;
-
 import java.util.List;
 
-public interface IProjectDao {
-    List<Project> getAllProjects();
+public interface IProjectDAO {
     void addProject(Project project);
-    void deleteProject(Project project);
+    Project getProject(int projectId);
+    List<Project> getAllProjects();
     void updateProject(Project project);
+    void deleteProject(int projectId);
 }

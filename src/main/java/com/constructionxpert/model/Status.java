@@ -1,7 +1,7 @@
 package com.constructionxpert.model;
 
 public enum Status {
-    todo,
-    progress,
-    completed
+    PENDING,
+    IN_PROGRESS,
+    COMPLETED
 }

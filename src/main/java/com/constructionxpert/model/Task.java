@@ -1,22 +1,30 @@
 package com.constructionxpert.model;
 
 import java.sql.Date;
+import java.util.List;
 
 public class Task {
     private int taskId;
-    private String name;
-    private String description;
+    private int projectId;
+    private String taskName;
+    private String taskDesc;
     private Date startDate;
     private Date endDate;
-    private Status status;
+    private String taskStatus;
+    private List<Resource> resources;
 
-    public Task(int taskId, String name, String description, Date startDate, Date endDate, Status status) {
+    public Task() {
+    }
+
+    public Task(int taskId, int projectId, String taskName, String taskDesc, Date startDate, Date endDate, String taskStatus, List<Resource> resources) {
         this.taskId = taskId;
-        this.name = name;
-        this.description = description;
+        this.projectId = projectId;
+        this.taskName = taskName;
+        this.taskDesc = taskDesc;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.status = status;
+        this.taskStatus = taskStatus;
+        this.resources = resources;
     }
 
     public int getTaskId() {
@@ -27,20 +35,28 @@ public class Task {
         this.taskId = taskId;
     }
 
-    public String getName() {
-        return name;
+    public int getProjectId() {
+        return projectId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+
+    public String getTaskDesc() {
+        return taskDesc;
+    }
+
+    public void setTaskDesc(String taskDesc) {
+        this.taskDesc = taskDesc;
     }
 
     public Date getStartDate() {
@@ -59,12 +75,20 @@ public class Task {
         this.endDate = endDate;
     }
 
-    public Status getStatus() {
-        return status;
+    public String getTaskStatus() {
+        return taskStatus;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setTaskStatus(String taskStatus) {
+        this.taskStatus = taskStatus;
+    }
+
+    public List<Resource> getResources() {
+        return resources;
+    }
+
+    public void setResources(List<Resource> resources) {
+        this.resources = resources;
     }
 }
 
