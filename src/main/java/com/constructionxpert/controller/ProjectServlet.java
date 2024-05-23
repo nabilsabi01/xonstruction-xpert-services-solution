@@ -73,7 +73,7 @@ public class ProjectServlet extends HttpServlet {
     private void listProjects(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Project> projects = projectDAO.getAllProjects();
         request.setAttribute("projects", projects);
-        request.getRequestDispatcher("list-projects.jsp").forward(request, response);
+        request.getRequestDispatcher("dashboard.jsp").forward(request, response);
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

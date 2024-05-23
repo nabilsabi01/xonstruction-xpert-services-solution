@@ -54,30 +54,6 @@ public class TaskDAOImpl implements ITaskDAO {
     }
 
     @Override
-    public List<Task> getAllTasks() {
-        List<Task> tasks = new ArrayList<>();
-        String sql = "SELECT * FROM tasks";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-            while (rs.next()) {
-                Task task = new Task();
-                task.setTaskId(rs.getInt("task_id"));
-                task.setProjectId(rs.getInt("project_id"));
-                task.setTaskName(rs.getString("task_name"));
-                task.setTaskDesc(rs.getString("task_desc"));
-                task.setStartDate(rs.getDate("start_date"));
-                task.setEndDate(rs.getDate("end_date"));
-                task.setTaskStatus(rs.getString("task_status"));
-                tasks.add(task);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return tasks;
-    }
-
-    @Override
     public List<Task> getTasksByProjectId(int projectId) {
         List<Task> tasks = new ArrayList<>();
         String sql = "SELECT * FROM tasks WHERE project_id = ?";

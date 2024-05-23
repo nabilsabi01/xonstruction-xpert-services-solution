@@ -1,7 +1,6 @@
 package com.constructionxpert.model;
 
 import java.sql.Date;
-import java.util.List;
 
 public class Task {
     private int taskId;
@@ -11,12 +10,12 @@ public class Task {
     private Date startDate;
     private Date endDate;
     private String taskStatus;
-    private List<Resource> resources;
 
+    // Constructors
     public Task() {
     }
 
-    public Task(int taskId, int projectId, String taskName, String taskDesc, Date startDate, Date endDate, String taskStatus, List<Resource> resources) {
+    public Task(int taskId, int projectId, String taskName, String taskDesc, Date startDate, Date endDate, String taskStatus) {
         this.taskId = taskId;
         this.projectId = projectId;
         this.taskName = taskName;
@@ -24,9 +23,18 @@ public class Task {
         this.startDate = startDate;
         this.endDate = endDate;
         this.taskStatus = taskStatus;
-        this.resources = resources;
     }
 
+    public Task(int projectId, String taskName, String taskDesc, Date startDate, Date endDate, String taskStatus) {
+        this.projectId = projectId;
+        this.taskName = taskName;
+        this.taskDesc = taskDesc;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.taskStatus = taskStatus;
+    }
+
+    // Getters and Setters
     public int getTaskId() {
         return taskId;
     }
@@ -83,12 +91,16 @@ public class Task {
         this.taskStatus = taskStatus;
     }
 
-    public List<Resource> getResources() {
-        return resources;
-    }
-
-    public void setResources(List<Resource> resources) {
-        this.resources = resources;
+    @Override
+    public String toString() {
+        return "Task{" +
+                "taskId=" + taskId +
+                ", projectId=" + projectId +
+                ", taskName='" + taskName + '\'' +
+                ", taskDesc='" + taskDesc + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", taskStatus='" + taskStatus + '\'' +
+                '}';
     }
 }
-
