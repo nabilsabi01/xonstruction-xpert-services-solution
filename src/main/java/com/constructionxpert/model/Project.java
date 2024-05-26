@@ -10,19 +10,17 @@ public class Project {
     private Date startDate;
     private Date endDate;
     private double budget;
-    private List<Task> tasks;
 
     public Project() {
     }
 
-    public Project(int projectId, String projectName, String projectDesc, Date startDate, Date endDate, double budget, List<Task> tasks) {
+    public Project(int projectId, String projectName, String projectDesc, Date startDate, Date endDate, double budget) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.projectDesc = projectDesc;
         this.startDate = startDate;
         this.endDate = endDate;
         this.budget = budget;
-        this.tasks = tasks;
     }
 
     public int getProjectId() {
@@ -73,14 +71,6 @@ public class Project {
         this.budget = budget;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
-
     @Override
     public String toString() {
         return "Project{" +
@@ -90,7 +80,6 @@ public class Project {
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", budget=" + budget +
-                ", tasks=" + tasks +
                 '}';
     }
 }
