@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
 
-@WebServlet("/tasks")
+@WebServlet(name = "TaskServlet", value = "/tasks")
 public class TaskServlet extends HttpServlet {
     private ITaskDAO taskDAO;
     private IProjectDAO projectDAO;

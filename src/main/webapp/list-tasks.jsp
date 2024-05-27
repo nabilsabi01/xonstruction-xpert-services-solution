@@ -5,178 +5,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasks by Project</title>
+    <title>ConstructionXpert Project Management</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
     <style>
         :root {
-            --primary-color: #3f51b5; /* Indigo */
-            --secondary-color: #ff9800; /* Orange */
-            --accent-color: #4caf50; /* Green */
-            --text-color: #333333; /* Dark Gray */
+            --primary-color: #FF7555;
+            --secondary-color: #5C6CA2;
+            --light-color: #F5F5F5;
+            --dark-color: #333333;
+            --accent-color: #FFD17C;
+            --bg-color: #FFFFFF;
+            --card-bg-color: #FFFFFF;
+            --card-hover-bg-color: #F8F9FA;
+            --pending-color: #ffc107;
+            --in-progress-color: #17a2b8;
+            --completed-color: #28a745;
         }
-        /* Custom CSS for Navbar */
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+        }
+
+        .row.row-cols-1 > * {
+            margin-bottom: 1.5rem;
+        }
+
+        .row.row-cols-md-2 > * {
+            margin-bottom: 1.5rem;
+        }
+
+        .row.row-cols-lg-3 > * {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Start Navbar */
         .navbar {
+            background-color: var(--secondary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 0.5rem 1rem;
         }
 
         .navbar-brand {
-            margin-right: 2rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.5rem;
+            transition: color 0.3s ease-in-out;
         }
 
-        .navbar-nav .nav-link {
-            margin-right: 1rem;
+        .navbar-brand:hover {
+            color: var(--primary-color);
         }
 
-        .profile-img {
-            border: 2px solid #fff;
+        .logo {
+            margin-right: 0.5rem;
         }
 
-        .navbar-toggler {
-            border: none;
+        .user-name {
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+            margin-right: 0.5rem;
         }
 
-        .navbar-toggler:focus {
-            outline: none;
+        .user-name:hover{
+            color: var(--primary-color);
         }
+        /* End Navbar */
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
-            color: var(--text-color);
-        }
-        .card {
-            margin-bottom: 20px;
+        /* Custom CSS for Tasks Page */
+        .task-card {
             border: none;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            background-color: var(--card-bg-color);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
         }
-        .card:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+        .task-card:hover {
             transform: translateY(-5px);
+            background-color: var(--card-hover-bg-color);
         }
-        .card-header {
-            background-color: var(--primary-color);
+
+        .task-card .card-header {
+            background-color: var(--secondary-color);
             color: #fff;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
-            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
         }
-        .card-body {
-            padding: 1.5rem;
+
+        .task-card .card-header h5 {
+            margin-bottom: 0;
         }
-        .card-footer {
-            background-color: #f8f9fa;
+
+        .task-card .card-body {
+            padding: 1.8rem;
+        }
+
+        .task-card .card-footer {
+            background-color: var(--light-color);
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
-            padding: 10px 15px;
+            padding: 1.2rem 1.5rem;
         }
-        .task-title {
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 1.25rem;
-            color: #fff;
-        }
-        .task-details {
-            margin-bottom: 0;
-            color: var(--text-color);
-        }
-        .btn-primary {
+
+        .task-card .btn {
             background-color: var(--primary-color);
-            border-color: var(--primary-color);
+            color: #fff;
+            transition: all 0.3s ease-in-out;
         }
-        .btn-primary:hover {
-            background-color: #344891;
-            border-color: #344891;
+
+        .task-card .btn:hover {
+            background-color: var(--secondary-color);
         }
-        .status-badge {
-            font-size: 0.9rem;
-            font-weight: 500;
+
+        .task-card .list-group-item {
+            background-color: transparent;
+            border: none;
+            padding: 0.5rem 0;
+            color: var(--dark-color);
         }
+
+        .task-card .list-group-item i {
+            color: var(--primary-color);
+        }
+
+        .title-page {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .badge {
+            font-size: 0.9em;
+            padding: 0.4em 0.7em;
+        }
+
+        .badge-pending {
+            background-color: var(--pending-color);
+        }
+
+        .badge-in-progress {
+            background-color: var(--in-progress-color);
+        }
+
+        .badge-completed {
+            background-color: var(--completed-color);
+        }
+
+        .btn-add {
+            background-color: var(--primary-color);
+            color: white;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-add:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        #taskForm .mb-3 {
+            margin-bottom: 1.5rem !important;
+        }
+
+        #taskModal .modal-footer button {
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">ConstructionXpert</a>
+        <a class="navbar-brand d-flex align-items-center" href="projects">
+            <img class="logo me-2" src="img/logo.png" alt="Logo" width="40">
+            <span>ConstructionXPert</span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="projects" onclick="displaySection('projects')">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="tasks" onclick="displaySection('tasks')">Tasks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="displaySection('resources')">Resources</a>
-                </li>
-            </ul>
-            <div class="d-flex align-items-center">
-                <span class="text-white me-3">Nabil SABI</span>
-                <img src="IMAGES/profile.png" alt="User Avatar" class="rounded-circle profile-img" width="40">
+            <div class="user-info d-flex align-items-center ms-auto">
+                <span class="user-name me-2">John Doe</span>
+                <img src="img/profile.png" alt="User Avatar" class="rounded-circle" width="40">
             </div>
         </div>
     </div>
 </nav>
 
-
-<div class="container">
-    <div class="row mb-4">
-        <div class="col-12">
-            <h1 class="text-center mb-4" style="color: var(--primary-color);">Tasks for Project: ${project.projectName}</h1>
-            <div class="d-flex justify-content-center">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#taskModal" onclick="showTaskModal(null, ${project.projectId})">
+<main class="container-fluid py-4">
+    <section id="content">
+        <div id="tasks" class="section active">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="mb-0 title-page">Tasks for Project: ${project.projectName}</h2>
+                <button class="btn btn-add" data-bs-toggle="modal" data-bs-target="#taskModal" onclick="showTaskModal(null, ${project.projectId})">
                     <i class="bi bi-plus-circle me-2"></i> Add New Task
                 </button>
             </div>
-        </div>
-    </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        <c:forEach items="${tasks}" var="task">
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="card-title task-title mb-0">${task.taskName}</h5>
-                        <span class="badge rounded-pill status-badge ${task.taskStatus == 'Pending' ? 'bg-warning text-dark' : (task.taskStatus == 'In Progress' ? 'bg-info' : 'bg-success')}">
-                                ${task.taskStatus}
-                        </span>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <c:forEach items="${tasks}" var="task">
+                    <div class="col">
+                        <div class="card h-100 task-card">
+                            <div class="card-header">
+                                <h5 class="card-title">${task.taskName}</h5>
+                                <c:choose>
+                                    <c:when test="${task.taskStatus == 'PENDING'}">
+                                        <span class="badge badge-pending">Pending</span>
+                                    </c:when>
+                                    <c:when test="${task.taskStatus == 'IN_PROGRESS'}">
+                                        <span class="badge badge-in-progress">In Progress</span>
+                                    </c:when>
+                                    <c:when test="${task.taskStatus == 'COMPLETED'}">
+                                        <span class="badge badge-completed">Completed</span>
+                                    </c:when>
+                                </c:choose>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">${task.taskDesc}</p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <i class="bi bi-calendar-event me-2"></i> Start Date: ${task.startDate}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="bi bi-calendar-check me-2"></i> End Date: ${task.endDate}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <button class="btn" data-bs-toggle="modal" data-bs-target="#taskModal" onclick="showTaskModal(${task.taskId}, ${task.projectId}, '${task.taskName}', '${task.taskDesc}', '${task.startDate}', '${task.endDate}', '${task.taskStatus}')">
+                                    <i class="bi bi-pencil me-2"></i> Edit
+                                </button>
+                                <form action="tasks" method="post" class="d-inline">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="taskId" value="${task.taskId}">
+                                    <input type="hidden" name="projectId" value="${project.projectId}">
+                                    <button type="submit" class="btn" onclick="return confirm('Are you sure you want to delete this task?')">
+                                        <i class="bi bi-trash me-2"></i> Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p class="task-details">${task.taskDesc}</p>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item task-details">
-                                <i class="bi bi-calendar me-2"></i> Start Date: ${task.startDate}
-                            </li>
-                            <li class="list-group-item task-details">
-                                <i class="bi bi-calendar-check me-2"></i> End Date: ${task.endDate}
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between">
-                        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#taskModal" onclick="showTaskModal(${task.taskId}, ${task.projectId}, '${task.taskName}', '${task.taskDesc}', '${task.startDate}', '${task.endDate}', '${task.taskStatus}')">
-                            <i class="bi bi-pencil me-2"></i> Edit
-                        </button>
-                        <form action="tasks" method="post" style="display:inline;">
-                            <input type="hidden" name="action" value="delete">
-                            <input type="hidden" name="taskId" value="${task.taskId}">
-                            <input type="hidden" name="projectId" value="${project.projectId}">
-                            <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this task?')">
-                                <i class="bi bi-trash me-2"></i> Delete
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
-        </c:forEach>
-    </div>
-</div>
+        </div>
+    </section>
+</main>
 
 <!-- Task Modal -->
 <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
@@ -193,7 +279,7 @@
                     <input type="hidden" id="action" name="action">
                     <div class="mb-3">
                         <label for="taskName" class="form-label">Task Name</label>
-                        <input type="text" class="form-control" id="taskName" name="taskName" required>
+                        <input type="text" class="form-control" id="taskName" name="taskName">
                     </div>
                     <div class="mb-3">
                         <label for="taskDesc" class="form-label">Task Description</label>
@@ -210,11 +296,10 @@
                     <div class="mb-3">
                         <label for="taskStatus" class="form-label">Task Status</label>
                         <select class="form-select" id="taskStatus" name="taskStatus">
-                            <option value="Pending" ${task.taskStatus == 'Pending' ? 'selected' : ''}>Pending</option>
-                            <option value="In_Progress" ${task.taskStatus == 'In_Progress' ? 'selected' : ''}>In Progress</option>
-                            <option value="Completed" ${task.taskStatus == 'Completed' ? 'selected' : ''}>Completed</option>
+                            <option value="Pending">Pending</option>
+                            <option value="In_Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
                         </select>
-
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -241,7 +326,7 @@
             document.getElementById('taskDesc').value = taskDesc;
             document.getElementById('startDate').value = startDate;
             document.getElementById('endDate').value = endDate;
-            document.getElementById('taskStatus').value = taskStatus; // Ensure lowercase for status
+            document.getElementById('taskStatus').value = taskStatus;
         } else {
             modalTitle.textContent = 'Add New Task';
             actionInput.value = 'insert';
@@ -251,10 +336,9 @@
             document.getElementById('taskDesc').value = '';
             document.getElementById('startDate').value = '';
             document.getElementById('endDate').value = '';
-            document.getElementById('taskStatus').value = 'Pending'; // Ensure lowercase for status
+            document.getElementById('taskStatus').value = 'Pending';
         }
     }
 </script>
-
 </body>
 </html>
