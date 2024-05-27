@@ -22,6 +22,15 @@ public class Resource {
         this.supplierContact = supplierContact;
     }
 
+    public Resource(int taskId, String resourceName, String resourceType, int quantity, String supplierName, String supplierContact) {
+        this.taskId = taskId;
+        this.resourceName = resourceName;
+        this.resourceType = resourceType;
+        this.quantity = quantity;
+        this.supplierName = supplierName;
+        this.supplierContact = supplierContact;
+    }
+
     public int getResourceId() {
         return resourceId;
     }

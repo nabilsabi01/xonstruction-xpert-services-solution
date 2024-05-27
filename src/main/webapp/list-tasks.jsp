@@ -123,11 +123,22 @@
         .task-card .btn {
             background-color: var(--primary-color);
             color: #fff;
+            border-radius: 20px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.9rem;
             transition: all 0.3s ease-in-out;
+            text-decoration: none;
         }
 
         .task-card .btn:hover {
             background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .task-card .btn i {
+            margin-right: 0.3rem;
+            font-size: 0.8rem;
         }
 
         .task-card .list-group-item {
@@ -255,6 +266,9 @@
                                         <i class="bi bi-trash me-2"></i> Delete
                                     </button>
                                 </form>
+                                <a href="resources?taskId=${task.taskId}" class="btn">
+                                    <i class="bi bi-eye me-2"></i> View Resources
+                                </a>
                             </div>
                         </div>
                     </div>

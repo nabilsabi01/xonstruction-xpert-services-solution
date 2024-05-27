@@ -112,7 +112,7 @@
         .project-card .card-header {
             background-color: var(--secondary-color);
             color: #fff;
-            border-top-left-radius: 10px;
+            border-top-left-ryadius: 10px;
             border-top-right-radius: 10px;
             padding: 1rem;
             display: flex;

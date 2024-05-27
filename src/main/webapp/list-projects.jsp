@@ -42,7 +42,7 @@
         }
 
         .navbar-brand:hover {
-            color: var(--secondary-color);
+            color: var(--primary-color);
         }
 
         .user-info {
@@ -64,14 +64,24 @@
         }
 
         .project-card .btn {
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color);
             color: #fff;
+            border-radius: 8px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.9rem;
             transition: all 0.3s ease-in-out;
+            text-decoration: none;
         }
 
         .project-card .btn:hover {
-            background-color: var(--primary-color);
+            background-color: var(--secondary-color);
             transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card .btn i {
+            margin-right: 0.3rem;
+            font-size: 0.8rem;
         }
 
         .project-card {
